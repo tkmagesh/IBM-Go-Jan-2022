@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+var myVar int
+
 func main() {
 	//var x int
 
@@ -78,4 +80,39 @@ func main() {
 	result := n1 + n2
 
 	fmt.Printf(str, n1, n2, result)
+
+	const z = 100
+
+	/*
+		const (
+			red   = iota
+			green = iota
+			blue  = iota
+		)
+	*/
+
+	/*
+		const (
+			red = iota
+			green
+			blue
+		)
+	*/
+
+	/*
+		const (
+			red = iota + 5
+			green
+			blue
+		)
+	*/
+
+	const (
+		red = iota + 5
+		green
+		_
+		blue
+	)
+
+	fmt.Printf("red = %d, green = %d, blue = %d\n", red, green, blue)
 }
