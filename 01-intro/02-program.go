@@ -121,4 +121,5 @@ func main() {
 	var vFloat float32 = 200
 	var vResult = (vInt) + int(vFloat)
 	fmt.Printf("vResult = %v of type %T\n", vResult, vResult)
+
 }
