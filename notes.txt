@@ -129,3 +129,6 @@ Display the following menu
 
 Assignment-3
     Refactor the assignment-2 solution using functions
+
+Functions
+    1. Anonymous functions
