@@ -115,4 +115,10 @@ func main() {
 	)
 
 	fmt.Printf("red = %d, green = %d, blue = %d\n", red, green, blue)
+
+	//type conversion
+	var vInt int = 100
+	var vFloat float32 = 200
+	var vResult = (vInt) + int(vFloat)
+	fmt.Printf("vResult = %v of type %T\n", vResult, vResult)
 }
