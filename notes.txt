@@ -133,3 +133,7 @@ Assignment-3
 Functions
     1. Anonymous functions
     2. Variadic functions
+    3. Higher order functions
+        a. functions can be assigned to variables
+        b. functions can be passed as arguments to other functions
+        c. functions can be returned by other functions
