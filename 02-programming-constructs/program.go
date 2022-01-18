@@ -134,5 +134,7 @@ func main() {
 		fallthrough
 	case 8:
 		fmt.Println("n <= 8")
+	default:
+		fmt.Println("default")
 	}
 }
