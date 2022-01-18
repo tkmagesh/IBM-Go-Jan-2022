@@ -7,10 +7,14 @@ import "fmt"
 func main() {
 	/* b. Functions can be passed as arguments to other functions */
 
-	logOperation(add, 100, 200)
-	logOperation(subtract, 100, 200)
-	logOperation(multiply, 100, 200)
-	logOperation(divide, 100, 200)
+	/*
+		logOperation(add, 100, 200)
+		logOperation(subtract, 100, 200)
+		logOperation(multiply, 100, 200)
+		logOperation(divide, 100, 200)
+	*/
+	loggerAdd := logOperation(add)
+	loggerAdd(100, 200)
 }
 
 /*
@@ -37,11 +41,13 @@ func logSubtract(x, y int) {
 }
 */
 
-func logOperation(oper func(int, int) int, x, y int) {
-	fmt.Println("Before invocation")
-	result := oper(x, y)
-	fmt.Println("result = ", result)
-	fmt.Println("After invocation")
+func logOperation(oper func(int, int) int) func(int, int) {
+	return func(x, y int) {
+		fmt.Println("Before invocation")
+		result := oper(x, y)
+		fmt.Println("result = ", result)
+		fmt.Println("After invocation")
+	}
 }
 
 func add(x, y int) int {
