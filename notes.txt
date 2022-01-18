@@ -132,3 +132,4 @@ Assignment-3
 
 Functions
     1. Anonymous functions
+    2. Variadic functions
