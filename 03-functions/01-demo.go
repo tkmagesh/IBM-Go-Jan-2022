@@ -27,6 +27,7 @@ func main() {
 func increment() {
 	counter++
 }
+
 func isPrime(no int) bool {
 	for i := 2; i <= (no / 2); i++ {
 		if no%i == 0 {
@@ -42,16 +43,19 @@ func add(x int, y int) int {
 }
 */
 
-/*
 func add(x, y int) int {
-	return x + y
+	/*
+		var result int
+		result = x + y
+	*/
+	result := x + y
+	return result
 }
-*/
 
-func add(x, y int) (result int) {
+/* func add(x, y int) (result int) {
 	result = x + y
 	return
-}
+} */
 
 /*
 func divide(x, y int) (int, int) {

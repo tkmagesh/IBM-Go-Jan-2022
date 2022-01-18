@@ -126,3 +126,6 @@ Display the following menu
 	If the user enters any other choice 
 		display "Invalid choice" 
 		display the menu again.
+
+Assignment-3
+    Refactor the assignment-2 solution using functions
