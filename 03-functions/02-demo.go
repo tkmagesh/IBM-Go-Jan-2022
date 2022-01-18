@@ -16,5 +16,6 @@ func main() {
 	subResult := func(x, y int) int {
 		return x - y
 	}(100, 200)
+
 	fmt.Println("subtract result =", subResult)
 }
