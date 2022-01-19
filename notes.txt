@@ -161,8 +161,9 @@ Modularity
                 github.com
                     tkmagesh
                         myApp1
-                        myApp2
-                            import "github.com/tkmagesh/myApp1"
+                            pk1
+                            pk2
+                                import "github.com/tkmagesh/myApp1/pk1"
 
     Module
         myApp
