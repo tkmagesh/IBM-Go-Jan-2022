@@ -180,3 +180,14 @@ Modularity
 
     to create a module
         go mod init <module-name>
+
+    to install 3rd party modules
+        go get <module-name>
+
+    to localize the dependencies
+        go mod vendor
+
+    to install tools
+        go install <package-name>
+
+    
