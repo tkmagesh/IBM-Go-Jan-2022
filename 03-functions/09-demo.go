@@ -24,9 +24,22 @@ func main() {
 	fmt.Println("result = ", result)
 }
 
+/*
 func divide(x, y int) (int, error) {
 	if y == 0 {
+		//return 0, fmt.Errorf("%d cannot be divided by zero", x)
 		return 0, DivideByZeroError
 	}
 	return x / y, nil
+}
+*/
+
+func divide(x, y int) (result int, err error) {
+	if y == 0 {
+		//return 0, fmt.Errorf("%d cannot be divided by zero", x)
+		err = DivideByZeroError
+		return
+	}
+	result = x / y
+	return
 }
