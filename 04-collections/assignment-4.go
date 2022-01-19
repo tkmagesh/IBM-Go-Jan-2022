@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"errors"
+	"fmt"
+	"os"
+)
 
 var operations map[int]func(int, int) int = map[int]func(int, int) int{
 	1: add,
@@ -10,9 +15,12 @@ var operations map[int]func(int, int) int = map[int]func(int, int) int{
 }
 
 func main() {
-	var n1, n2, userChoice, result int
 	for {
-		userChoice = getUserChoice()
+		userChoice, err := getUserChoice()
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
 		if userChoice < 1 || userChoice > 5 {
 			fmt.Println("Invalid choice")
 			continue
@@ -20,8 +28,12 @@ func main() {
 		if userChoice == 5 {
 			break
 		}
-		n1, n2 = getOperands()
-		result = performOperation(userChoice, n1, n2)
+		n1, n2, err := getOperands()
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+		result := performOperation(userChoice, n1, n2)
 		fmt.Println("result = ", result)
 	}
 }
@@ -34,20 +46,39 @@ func performOperation(userChoice, n1, n2 int) (result int) {
 	return
 }
 
-func getOperands() (n1, n2 int) {
-	fmt.Println("Enter the values :")
-	fmt.Scanf("%d %d\n", &n1, &n2)
+func getOperands() (n1, n2 int, err error) {
+	fmt.Println("Enter the No1 :")
+	scanner := bufio.NewScanner(os.Stdin)
+	if !scanner.Scan() {
+		err = errors.New("Invalid choice")
+		return // no input
+	}
+	_, err = fmt.Sscanf(scanner.Text(), "%d", &n1)
+	if err != nil {
+		return
+	}
+	fmt.Println("Enter the No2 :")
+	if !scanner.Scan() {
+		err = errors.New("Invalid choice")
+		return // no input
+	}
+	_, err = fmt.Sscanf(scanner.Text(), "%d", &n2)
 	return
 }
 
-func getUserChoice() (userChoice int) {
+func getUserChoice() (userChoice int, err error) {
 	fmt.Println("Enter the choice:")
 	fmt.Println("1. Add")
 	fmt.Println("2. Subtract")
 	fmt.Println("3. Multiply")
 	fmt.Println("4. Divide")
 	fmt.Println("5. Exit")
-	fmt.Scanf("%d\n", &userChoice)
+	scanner := bufio.NewScanner(os.Stdin)
+	if !scanner.Scan() {
+		err = errors.New("Invalid choice")
+		return // no input
+	}
+	_, err = fmt.Sscanf(scanner.Text(), "%d", &userChoice)
 	return
 }
 
