@@ -137,3 +137,15 @@ Functions
         a. functions can be assigned to variables
         b. functions can be passed as arguments to other functions
         c. functions can be returned by other functions
+    4. handling errors
+    5. deferred functions
+    6. panic & recovery
+
+Collections
+    1. Array
+        Fixed size
+    2. Slice
+        Wrapper for an array
+        Variable size
+    3. Map
+        key/value collection
