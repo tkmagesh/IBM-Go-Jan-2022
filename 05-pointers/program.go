@@ -16,9 +16,9 @@ func main() {
 	fmt.Println("After incrementing, no = ", no)
 
 	var n1, n2 = 10, 20
-	fmt.Printf("Before swapping n1 = %d and n2 = %d\n")
-	swap( /*  */ )
-	fmt.Printf("After swapping n1 = %d and n2 = %d\n")
+	fmt.Printf("Before swapping n1 = %d and n2 = %d\n", n1, n2)
+	swap(&n1, &n2)
+	fmt.Printf("After swapping n1 = %d and n2 = %d\n", n1, n2)
 
 }
 
@@ -26,6 +26,6 @@ func increment(no *int) {
 	*no++
 }
 
-func swap( /*  */ ) {
-
+func swap(x, y *int /*  */) {
+	*x, *y = *y, *x
 }
