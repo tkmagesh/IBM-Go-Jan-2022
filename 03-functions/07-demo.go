@@ -42,12 +42,13 @@ func logSubtract(x, y int) {
 */
 
 func logOperation(oper func(int, int) int) func(int, int) {
-	return func(x, y int) {
+	decoratedOperation := func(x, y int) {
 		fmt.Println("Before invocation")
 		result := oper(x, y)
 		fmt.Println("result = ", result)
 		fmt.Println("After invocation")
 	}
+	return decoratedOperation
 }
 
 func add(x, y int) int {
