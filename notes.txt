@@ -149,3 +149,33 @@ Collections
         Variable size
     3. Map
         key/value collection
+
+Modularity
+    Before go 1.13
+        GOPATH
+            bin
+                go tool binaries
+            pkg
+                third party packages
+            src
+                github.com
+                    tkmagesh
+                        myApp1
+                        myApp2
+                            import "github.com/tkmagesh/myApp1"
+
+    Module
+        myApp
+            go.mod
+            main.go
+                import modulename/pkg1
+
+            /pk1
+                f1.go
+                f2.go
+            /pkg
+                f1.go
+                f2.go
+
+    to create a module
+        go mod init <module-name>
