@@ -58,8 +58,15 @@ func main() {
 	emp := models.NewEmployee(5001, "Magesh", "IBM", "Bengaluru")
 	fmt.Printf("%#v\n", emp)
 
+	//Write the "ApplyDiscount" method to apply the given discount to the given product
+	ApplyDiscount(&product, 10)
+	fmt.Println(ToString(&product))
 }
 
 func ToString(product *Product) string {
 	return fmt.Sprintf("Id=%d, Name=%q, Cost=%f, Units=%d, Category=%q", product.Id, product.Name, product.Cost, product.Units, product.Category)
+}
+
+func ApplyDiscount(product *Product, discount float64) {
+	product.Cost = product.Cost * ((100 - discount) / 100)
 }
