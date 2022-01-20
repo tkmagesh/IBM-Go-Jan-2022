@@ -53,11 +53,11 @@ func main() {
 	}
 	fmt.Printf("%#v\n", grapes)
 	//fmt.Println(grapes.Product.Name)
-	fmt.Println(grapes.Name)
+	fmt.Printf("grapes.Name = %q\n", grapes.Name)
 
 	/* Assinging a new Name */
 	grapes.Name = "Arabian Grapes"
-	fmt.Println(grapes.Name)
+	fmt.Println("grapes.Name = ", grapes.Name)
 
 	fmt.Println(ToString(&grapes.Product))
 
