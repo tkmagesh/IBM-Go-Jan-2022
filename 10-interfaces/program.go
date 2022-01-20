@@ -48,14 +48,32 @@ func PrintPerimeter(x ShapeWithPerimeter) {
 	fmt.Println("Perimeter = ", x.Perimeter())
 }
 
+//interface composition
+type ShapeDetails interface {
+	ShapeWithArea
+	ShapeWithPerimeter
+}
+
+func PrintDetails(s ShapeDetails) {
+	//Print Area & Perimeter
+	PrintArea(s)
+	PrintPerimeter(s)
+}
+
 func main() {
 	c := Circle{Radius: 12}
 	//fmt.Println("Area = ", c.Area())
-	PrintArea(c)
-	PrintPerimeter(c)
+	/*
+		PrintArea(c)
+		PrintPerimeter(c)
+	*/
+	PrintDetails(c)
 
 	r := Rectangle{Height: 12, Width: 10}
 	//fmt.Println("Area = ", r.Area())
-	PrintArea(r)
-	PrintPerimeter(r)
+	/*
+		PrintArea(r)
+		PrintPerimeter(r)
+	*/
+	PrintDetails(r)
 }
