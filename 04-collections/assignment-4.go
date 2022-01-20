@@ -7,14 +7,25 @@ import (
 	"os"
 )
 
-var operations map[int]func(int, int) int = map[int]func(int, int) int{
+type operation func(int, int) int
+type operationsCollection map[int]operation
+
+/* var operations operationsCollection = operationsCollection{
 	1: add,
 	2: subtract,
 	3: multiply,
 	4: divide,
-}
+} */
+
+var operations operationsCollection
 
 func main() {
+	operations = make(operationsCollection)
+	operations[1] = add
+	operations[2] = subtract
+	operations[3] = multiply
+	operations[4] = divide
+
 	for {
 		userChoice, err := getUserChoice()
 		if err != nil {
