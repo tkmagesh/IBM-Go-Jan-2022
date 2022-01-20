@@ -7,7 +7,10 @@ Implement "sorting" functionality for the Products
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type Product struct {
 	Id       int
@@ -17,7 +20,7 @@ type Product struct {
 	Category string
 }
 
-func (product *Product) ToString() string {
+func (product Product) String() string {
 	return fmt.Sprintf("Id=%d, Name=%q, Cost=%f, Units=%d, Category=%q", product.Id, product.Name, product.Cost, product.Units, product.Category)
 }
 
@@ -66,12 +69,61 @@ func (products *Products) Any(criteria ProductPredicate) bool {
 	return false
 }
 
-func (products *Products) ToString() string {
+func (products Products) String() string {
 	result := ""
-	for _, p := range *products {
-		result += p.ToString() + "\n"
+	for _, p := range products {
+		result += fmt.Sprint(p) + "\n"
 	}
 	return result
+}
+
+/* "sort.interface" interface implementation */
+func (products Products) Len() int {
+	return len(products)
+}
+
+func (products Products) Swap(i, j int) {
+	products[i], products[j] = products[j], products[i]
+}
+
+func (products Products) Less(i, j int) bool {
+	return products[i].Id < products[j].Id
+}
+
+//Sorting by Name
+type ByName struct {
+	Products
+}
+
+func (byName ByName) Less(i, j int) bool {
+	return byName.Products[i].Name < byName.Products[j].Name
+}
+
+//Sorting by Cost
+type ByCost struct {
+	Products
+}
+
+func (byCost ByCost) Less(i, j int) bool {
+	return byCost.Products[i].Cost < byCost.Products[j].Cost
+}
+
+//Sorting by Units
+type ByUnits struct {
+	Products
+}
+
+func (byUnits ByUnits) Less(i, j int) bool {
+	return byUnits.Products[i].Units < byUnits.Products[j].Units
+}
+
+//Sorting by Category
+type ByCategory struct {
+	Products
+}
+
+func (byCategory ByCategory) Less(i, j int) bool {
+	return byCategory.Products[i].Category < byCategory.Products[j].Category
 }
 
 func main() {
@@ -107,18 +159,48 @@ func main() {
 		return p.Cost > 1000
 	}
 	costlyProducts := products.Filter(costlyProductCriteria)
-	fmt.Print(costlyProducts.ToString())
+	fmt.Print(costlyProducts)
 
 	fmt.Println("Filter Stationary products")
 	stationaryProductCriteria := func(p Product) bool {
 		return p.Category == "Stationary"
 	}
 	stationaryProducts := products.Filter(stationaryProductCriteria)
-	fmt.Print(stationaryProducts.ToString())
+	fmt.Print(stationaryProducts)
 
 	fmt.Println("All")
 	fmt.Println("Are all the products costly products ? :", products.All(costlyProductCriteria))
 
 	fmt.Println("Any")
 	fmt.Println("Are there any costly products ? :", products.Any(costlyProductCriteria))
+
+	fmt.Println()
+	fmt.Println("Initial List")
+	fmt.Println(products)
+
+	fmt.Println()
+	fmt.Println("Default Sort (by Id)")
+	sort.Sort(products)
+	fmt.Println(products)
+
+	fmt.Println()
+	fmt.Println("Default Sort (by Name)")
+	sort.Sort(ByName{products})
+	fmt.Println(products)
+
+	fmt.Println()
+	fmt.Println("Default Sort (by Cost)")
+	sort.Sort(ByCost{products})
+	fmt.Println(products)
+
+	fmt.Println()
+	fmt.Println("Default Sort (by Units)")
+	sort.Sort(ByUnits{products})
+	fmt.Println(products)
+
+	fmt.Println()
+	fmt.Println("Default Sort (by Category)")
+	sort.Sort(ByCategory{products})
+	fmt.Println(products)
+
 }
