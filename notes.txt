@@ -191,3 +191,5 @@ Modularity
         go install <package-name>
 
     
+Duck Typing
+    If you have an object that walks like a duck and quacks like a duck, you can treat is as a duck even though it is NOT a duck
