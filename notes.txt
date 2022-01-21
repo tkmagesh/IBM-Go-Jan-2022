@@ -218,3 +218,23 @@ Concurrency:
 
 Assignment:9
     Modify the demo-14.go to generate the even numbers until the user hits the ENTER key
+
+IO
+    io package
+        base interfaces
+            Reader
+            Writer
+            Closer
+            Seeker
+    ioutil package
+        read file
+        write file
+
+    bufio package
+        read line
+        buffered reading & writing
+
+    os package
+        file related operations
+            creating, copying, deleting
+
