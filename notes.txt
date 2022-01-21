@@ -200,3 +200,8 @@ Concurrency:
 
     To detect race conditions
         go run --race <program.go>
+
+    Channel Operations ( <- operator )
+        ch := make(chan int) //creating the channel
+        ch <- 10            // writing
+        result := <- ch     // reading
