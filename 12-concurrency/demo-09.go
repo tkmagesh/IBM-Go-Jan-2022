@@ -9,7 +9,7 @@ import (
 //Share memory by communicating (using channels)
 func main() {
 	wg := &sync.WaitGroup{}
-	ch := make(chan int)
+	ch := make(chan int) //non-buffered channel
 	wg.Add(1)
 	go add(100, 200, wg, ch)
 	wg.Wait()

@@ -205,3 +205,13 @@ Concurrency:
         ch := make(chan int) //creating the channel
         ch <- 10            // writing
         result := <- ch     // reading
+
+        All read operations are blocking operations
+
+        
+    Types of Channels
+        Non Buffered
+        Buffered
+
+        Non Buffered
+            A write operation will be blocked until a read operation is initiated
