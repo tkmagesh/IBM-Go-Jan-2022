@@ -196,3 +196,7 @@ Duck Typing
 
 Concurrency:
     Never ASSUME the order in which the goroutines will be executed
+    A function that has to be executed as goroutine CANNOT have any return values
+
+    To detect race conditions
+        go run --race <program.go>
