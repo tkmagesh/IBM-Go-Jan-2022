@@ -35,7 +35,7 @@ func main() {
 
 func add(x, y int, wg *sync.WaitGroup) {
 	opCount.Increment()
-	//fmt.Println(x + y)
+	fmt.Println(x + y)
 	wg.Done()
 
 }
