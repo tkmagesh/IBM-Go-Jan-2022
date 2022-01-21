@@ -15,7 +15,7 @@ import (
 func main() {
 	wg := &sync.WaitGroup{}
 	wg.Add(2)
-	ch1 := make(chan bool)
+	ch1 := make(chan bool, 1)
 	ch2 := make(chan bool)
 	go print("Hello", ch1, ch2, wg)
 	go print("World", ch2, ch1, wg)
