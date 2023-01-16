@@ -238,3 +238,5 @@ IO
         file related operations
             creating, copying, deleting
 
+To run tests
+    go test ./... -v
